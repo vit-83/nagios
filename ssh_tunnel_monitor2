@@ -1,0 +1,9 @@
+#!/usr/local/bin/bash
+RET=`ps ax | grep "ssh -w5:5 -p2222 -fN root@10.35.5.111" | grep -v "grep"`
+ if [ "$RET" = "" ]; then
+    ssh -w5:5 -p2222 -fN root@10.35.5.111
+    ifconfig tun5 10.0.0.2 10.0.0.1
+    route add 172.30.252.0/23 10.0.0.1
+    ssh -o StrictHostKeyChecking=no -p2222 root@10.35.5.111 "ifconfig tun5 10.0.0.1 10.0.0.2 && route add 10.2.245.0/24 10.0.0.2" 
+ fi
+

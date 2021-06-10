@@ -1,0 +1,27 @@
+#!/usr/local/bin/python2
+
+from netmiko import ConnectHandler
+import sys
+
+
+cisco_ios = {
+    'device_type': 'cisco_ios',
+    'ip':   '10.35.18.2',
+    'username': 'Vitaliy',
+    'password': '',
+    'port' : 22,
+}
+
+
+#with open(sys.argv[1]) as f:
+#    lines = f.read().splitlines()
+#print lines
+
+lines = 'show inventory'
+net_connect = ConnectHandler(**cisco_ios)
+
+out = net_connect.send_command(lines)
+#data = out.split()
+#for temp in data:
+print out
+

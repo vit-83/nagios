@@ -1,0 +1,6 @@
+#!/usr/local/bin/bash
+while true;do
+  RET=`ps ax | grep "ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -fN -L 0.0.0.0:88:localhost:80 -p2222 10.35.5.111" | grep -v "grep"`
+    echo $RET 
+done
+

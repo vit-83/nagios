@@ -1,0 +1,8 @@
+search_dir=/usr/local/etc/nagios/wimax
+for entry in "$search_dir"/*
+do
+	cat $entry | sed -e "s/10.34.5.138/10.34.15.41/" > $entry.1 
+	mv $entry.1 $entry
+	echo "$entry"
+done
+
